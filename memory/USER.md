@@ -33,6 +33,7 @@ _(e.g. terse, no pleasantries, blunt feedback preferred, OK with dry
 humour. When you're uncertain, say so rather than guessing.)_
 
 - _…_
+- No pleasantries. Blunt feedback preferred.
 
 ## When to interrupt you
 _(e.g. urgent only between 09:00–18:00 Europe/Budapest, absolutely nothing
