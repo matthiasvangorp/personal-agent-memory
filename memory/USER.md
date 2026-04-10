@@ -50,6 +50,7 @@ overnight temperature, portfolio deltas > 1%, Hungarian VAT deadlines.)_
 
 - _…_
 - Flag notable health drops (HRV, sleep, recovery trends).
+- Options trading on IBKR (running the wheel) — flag anything notable on positions.
 
 ## What you don't want
 _(e.g. daily "everything looks fine" pings, summaries of what the agent
