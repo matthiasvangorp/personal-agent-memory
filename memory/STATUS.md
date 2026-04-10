@@ -1,10 +1,10 @@
 # Project status
 
-Updated 2026-04-10 by the agent build session.
+Updated 2026-04-10 by the agent build session (tier 2 dashboard).
 
 ## Where we are
 
-**Phase 1 v1 shipped + dashboard tier 1 done.** All core infrastructure is in
+**Phase 1 v1 shipped + dashboard tier 1 & 2 done.** All core infrastructure is in
 production: Telegram bot (long-poll), Whisper voice-in, scheduled heartbeat
 with sleep-gap detection, Apple Health ingest via HAE webhook, the approval
 gate, the LogWatcher self-healing loop, the daily HealthDiary check-in, and a
@@ -37,17 +37,28 @@ Livewire dashboard at `https://agent.test/dashboard`.
 
 ## Dashboard pages live
 
+Tier 1:
 - `/dashboard` — overview (heartbeat, cost MTD+projected, approvals count, skill grid, diary, Apple Health card)
 - `/dashboard/models` — per-call-site provider+model swap with Test action
 - `/dashboard/approvals` — pending list with LogWatcher diff blocks + MemoryEditor previews, inline approve/reject, 14-day history
 - `/dashboard/conversations` + `/conversations/{id}` — list + drill-down with role bubbles, inline tool calls/results, per-turn token counts
 
+Tier 2 (shipped 2026-04-10):
+- `/dashboard/activity` — 30d cost bar chart + 48h heartbeat scatter (ticks vs gaps, one lane per skill). Chart.js 4 + date-fns adapter via CDN in layout.blade.php.
+- `/dashboard/logs` — skill log tail viewer, efficient reverse-read, 150 lines, 10s auto-refresh
+- `/dashboard/memory` — direct textarea editor for USER.md/AGENTS.md/travel.md/skills/*.md. Save = write to disk + git commit + push to memory repo. Bypasses the approval gate on purpose — LAN-only single-user, and every save is already an undo-able git commit. HEARTBEAT.md is not in the whitelist.
+- `/dashboard/diary` — monthly calendar of health_diary_entries with energy-colored cells, prev/next nav, click-to-view detail pane. First real entry arrives 2026-04-11 10:00.
+
 ## Numbers
 
-- ~2,900 lines of app code (budget 5,000)
+- ~2,900 lines of app code (budget 5,000) — +~600 for tier 2
 - Cost so far: ~$0.37 today, projected ~$1-2/month (well under $20 budget)
 - Telegram conversation: 24 messages, 110k input / 2.5k output tokens during build day
-- 7 skills, 5 dashboard routes, 13+ migrations
+- 7 skills, 9 dashboard routes, 13+ migrations
+
+## Shared helpers
+
+- `app/Services/Memory/MemoryRepo.php` — whitelist, read/write, commitAndPush for the memory git repo. Used by the `MemoryEditor` skill (append-bullet path) and the `/dashboard/memory` Livewire editor (free-form edit path). Single source of truth for the whitelist.
 
 ## Open / pending
 
@@ -68,16 +79,14 @@ Livewire dashboard at `https://agent.test/dashboard`.
 
 ## What's next (priority order)
 
-1. **(Tier 2 dashboard, ~1 day)** Cost timeline chart, heartbeat timeline,
-   skill log tail, memory editor in the browser, diary calendar.
-2. **(Skill #8, varies)** Anything that crosses 8 hand-written skills unlocks
+1. **(Skill #8, varies)** Anything that crosses 8 hand-written skills unlocks
    Phase 2 skill self-generation.
-3. **(Phase 1.5 IBKR, ~1 day)** Python `ib_insync` sidecar +
+2. **(Phase 1.5 IBKR, ~1 day)** Python `ib_insync` sidecar +
    `PortfolioMorningBriefing` + `WheelStrategyTracker` + `PortfolioMomentumWatcher`.
    User runs the wheel strategy.
-4. **(Phase 2, after ≥8 skills)** `meta:create_skill` self-generation,
+3. **(Phase 2, after ≥8 skills)** `meta:create_skill` self-generation,
    followed by the user's specific request: "I want a skill that does X, build it."
-5. **(USER.md polish)** Sections "How to talk to you", "When to interrupt you",
+4. **(USER.md polish)** Sections "How to talk to you", "When to interrupt you",
    "What to prioritise", "What you don't want" still mostly templated. The
    filled-in sections (Identity, family, work) are real. The agent reads this
    every prompt — it makes a real difference.
