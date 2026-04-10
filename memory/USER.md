@@ -49,6 +49,7 @@ _(e.g. Kft invoicing punctuality, renovation budget variance, bedroom
 overnight temperature, portfolio deltas > 1%, Hungarian VAT deadlines.)_
 
 - _…_
+- Flag notable health drops (HRV, sleep, recovery trends).
 
 ## What you don't want
 _(e.g. daily "everything looks fine" pings, summaries of what the agent
