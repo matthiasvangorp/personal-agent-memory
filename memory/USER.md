@@ -14,6 +14,7 @@ to Budapest to live with my Hungarian girlfriend Ingrid (1975). I have 2 younger
 brothers, Jan (1982) and Quinten (1985). Both of my parents are dead. 
 My dad died of cancer in 2022 and my mom in 2025, also cancer. 
 - Fit and active: ran a marathon in 2024, lifts regularly, getting back into cycling as of spring 2025.
+- Fit and active: ran a marathon in 2024, lifts regularly, getting back into cycling as of spring 2026.
 
 ## What you work on
 I have a KFT doing Laravel development for 2 Belgian agencies (Hybrid media and 
