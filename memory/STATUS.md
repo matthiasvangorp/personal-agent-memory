@@ -10,7 +10,7 @@ with sleep-gap detection, Apple Health ingest via HAE webhook, the approval
 gate, the LogWatcher self-healing loop, the daily HealthDiary check-in, and a
 Livewire dashboard at `https://agent.test/dashboard`.
 
-## Skills in production (7 — one away from Phase 2 self-gen threshold)
+## Skills in production (8 — Phase 2 self-gen threshold reached)
 
 | Skill | Cadence | Approval? | What it does |
 |---|---|---|---|
@@ -21,6 +21,7 @@ Livewire dashboard at `https://agent.test/dashboard`.
 | `MemoryEditor` | on-demand | yes | Append a bullet to a whitelisted memory file (USER.md, AGENTS.md, travel.md, skills/*.md), commits to memory repo |
 | `LogWatcher` | every 30 min | yes | Reads laravel.log, asks Claude for `old_text`/`new_text` fix, validates safety rails, drafts approval, applies patch + commits + pushes to app repo |
 | `SendReminder` | on-demand | yes | Throwaway approval-gate demo, no real reminder system |
+| `WeatherBriefing` | daily 07:45 | no | Fetches Budapest open-meteo forecast and narrates it via Ollama (`qwen2.5:14b`) into a short Telegram message. First skill routed to Ollama by default via `ModelRouter::SITE_DEFAULTS`. |
 
 ## Architecture summary
 
@@ -54,7 +55,7 @@ Tier 2 (shipped 2026-04-10):
 - ~2,900 lines of app code (budget 5,000) — +~600 for tier 2
 - Cost so far: ~$0.37 today, projected ~$1-2/month (well under $20 budget)
 - Telegram conversation: 24 messages, 110k input / 2.5k output tokens during build day
-- 7 skills, 9 dashboard routes, 13+ migrations
+- 8 skills, 9 dashboard routes, 13+ migrations
 
 ## Shared helpers
 
@@ -79,14 +80,15 @@ Tier 2 (shipped 2026-04-10):
 
 ## What's next (priority order)
 
-1. **(Skill #8, varies)** Anything that crosses 8 hand-written skills unlocks
-   Phase 2 skill self-generation.
+1. **(Phase 2 self-generation, ~half day)** Build `meta:create_skill`: takes a
+   spec, reads the 8 existing skills as examples, asks Claude to generate a
+   new Skill class, writes it to disk, runs `composer dump-autoload`, drafts
+   an approval, and hot-loads it. Validate on one small skill (RssDigest or
+   GitActivityDigest) before pointing it at anything complex.
 2. **(Phase 1.5 IBKR, ~1 day)** Python `ib_insync` sidecar +
    `PortfolioMorningBriefing` + `WheelStrategyTracker` + `PortfolioMomentumWatcher`.
    User runs the wheel strategy.
-3. **(Phase 2, after ≥8 skills)** `meta:create_skill` self-generation,
-   followed by the user's specific request: "I want a skill that does X, build it."
-4. **(USER.md polish)** Sections "How to talk to you", "When to interrupt you",
+3. **(USER.md polish)** Sections "How to talk to you", "When to interrupt you",
    "What to prioritise", "What you don't want" still mostly templated. The
    filled-in sections (Identity, family, work) are real. The agent reads this
    every prompt — it makes a real difference.
