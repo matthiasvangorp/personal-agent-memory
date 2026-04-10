@@ -1,18 +1,30 @@
 # User
 
 Fill this in. The agent reads it every session to understand who you are
-and how you want to be helped.
+and how you want to be helped. Update this file with more info about me if you find 
+out anything interesting/useful during our conversations.
 
 ## Identity
 - Name: Matthias
 - Location: Budapest, Hungary
 - Timezone: Europe/Budapest
-- Languages: Dutch (native), English, Hungarian
+- Languages: Dutch (native), English, French, some Spanish and a little Hungarian
+-I was born in January 1981 and lived in Kasterlee, Belgium until 2017, when I moved 
+to Budapest to live with my Hungarian girlfriend Ingrid (1975). I have 2 younger 
+brothers, Jan (1982) and Quinten (1985). Both of my parents are dead. 
+My dad died of cancer in 2022 and my mom in 2025, also cancer. 
 
 ## What you work on
-_(e.g. run a Kft doing X for Y clients, renovation project, options trading
-on the side. Be specific — the agent uses this to judge relevance of
-notifications and to answer "what am I working on today" correctly.)_
+I have a KFT doing Laravel development for 2 Belgian agencies (Hybrid media and 
+Conversal). For Hybrid I work mostly on saferbusiness, a project for Baloise.
+For Conversal there are multiple projects, for example lamett.eu, valckenier.be, livetotravel.eu. 
+I have a Hungarian freelancer called Martin working with me on the Conversal projects.
+
+Martin and me also started a startup, https://revisit.pro/. Martin is the technical lead
+and I'm the commercial one.
+
+I also do options trading on the side (running the wheel).
+
 
 - _…_
 
