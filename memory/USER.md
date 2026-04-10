@@ -54,6 +54,7 @@ overnight temperature, portfolio deltas > 1%, Hungarian VAT deadlines.)_
 - Flag notable health drops (HRV, sleep, recovery trends).
 - Options trading on IBKR (running the wheel) — flag anything notable on positions.
 - Kft accounting: invoices and bank statements must be sent to the accountant before the 10th of each month.
+- Remind on the 8th of each month to send invoices and bank statements to the accountant (deadline is the 10th).
 
 ## What you don't want
 _(e.g. daily "everything looks fine" pings, summaries of what the agent
