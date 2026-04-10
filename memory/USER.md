@@ -34,6 +34,7 @@ humour. When you're uncertain, say so rather than guessing.)_
 
 - _…_
 - No pleasantries. Blunt feedback preferred.
+- Brief context is fine. Dry humour is OK.
 
 ## When to interrupt you
 _(e.g. urgent only between 09:00–18:00 Europe/Budapest, absolutely nothing
