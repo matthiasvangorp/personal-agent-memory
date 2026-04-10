@@ -1,0 +1,5 @@
+agent.sqlite
+agent.sqlite-journal
+agent.sqlite-wal
+agent.sqlite-shm
+skills/
