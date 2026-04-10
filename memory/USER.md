@@ -42,6 +42,7 @@ before 08:00 or after 22:00, skip weekends unless it's a heartbeat failure
 or a portfolio trade signal.)_
 
 - _…_
+- No Telegram pings between 22:00 and 08:00 Europe/Budapest, any day of the week.
 
 ## What to prioritise
 _(e.g. Kft invoicing punctuality, renovation budget variance, bedroom
