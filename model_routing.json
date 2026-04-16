@@ -1,0 +1,10 @@
+{
+    "meta-create-skill": {
+        "provider": "anthropic",
+        "model": "claude-opus-4-6"
+    },
+    "meta-patch-skill": {
+        "provider": "anthropic",
+        "model": "claude-opus-4-6"
+    }
+}
